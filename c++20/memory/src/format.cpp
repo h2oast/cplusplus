@@ -7,6 +7,8 @@ std::unique_ptr<int> grade = nullptr;
 
 int *grade_leaked = nullptr; // memory leak
 
+std::vector<int> *scores = nullptr; // memory leak
+
 int main()
 {
     std::vector<std::string> names = {"Alice", "Bob", "Charlie"};
@@ -25,5 +27,11 @@ int main()
     // delete grade_leaked; // fix memory leak
     grade_leaked = nullptr;
 
+    scores = new std::vector<int>{90, 80, 70}; // memory leak
+    scores->push_back(60);
+
+    for (const auto& score : *scores) {
+        std::cout << "score, " << score << "!" << std::endl;
+    }
     return 0;
 }

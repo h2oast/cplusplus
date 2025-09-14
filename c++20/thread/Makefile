@@ -12,4 +12,4 @@ check: compile
 
 clean:
 	@bazel clean
-	$(RM) *~
+	@find . -name *~ | xargs $(RM)
